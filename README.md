@@ -6,7 +6,7 @@ Leveraging the benefits of a self-balancing BST (AVL tree), the system ensures f
 Key Features:
 - Efficient searching and retrieval of contacts using a Binary Search Tree.
 - Sorted order maintenance for quick browsing and management.
-- Insertion and updating of contacts while preserving balanced tree structure.
+- Insertion, Updating and Deleting of contacts while preserving balanced tree structure.
 - Flexible duplicate handling options.
 - Traversal methods for comprehensive contact list exploration.
 
