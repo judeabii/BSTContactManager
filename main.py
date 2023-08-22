@@ -78,24 +78,17 @@ def find(node, name):
     return found_contact
 
 
-deleted_contact = [0]
-
-
 def delete(node, name):
     if node is None:
         return None
     if node.name == name:
         if node.right is None and node.left is None:
-            deleted_contact[0] = node
             return None
         if node.right is None and node.left:
-            deleted_contact[0] = node
             return node.left
         if node.left is None and node.right:
-            deleted_contact[0] = node
             return node.right
         if node.left and node.right:
-            deleted_contact[0] = node
             node.name = traverse_left(node.right)
             node.right = delete(node.right, node.name)
     elif node.name < name:

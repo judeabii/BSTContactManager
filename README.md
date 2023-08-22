@@ -43,3 +43,88 @@ def right_rotation(root):
 
     return new_root
 ```
+
+### Insertion
+```commandline
+def insert(node, name, number):
+    if node is None:
+        node = Contacts(name, number)
+        node.height = 1
+        return node
+    if node.name > name:
+        node.left = insert(node.left, name, number)
+    elif node.name < name:
+        node.right = insert(node.right, name, number)
+    elif node.name == name:
+        print(f"This contact name already exists : {node.name}")
+        return node
+        
+    # AVL implementation
+    
+    return node
+```
+The above code is followed by the AVL implementation code to make sure that the BST remains balanced after insertion.
+
+### Deletion
+```commandline
+def delete(node, name):
+    if node is None:
+        return None
+    if node.name == name:
+        if node.right is None and node.left is None:
+            deleted_contact[0] = node
+            return None
+        if node.right is None and node.left:
+            deleted_contact[0] = node
+            return node.left
+        if node.left is None and node.right:
+            deleted_contact[0] = node
+            return node.right
+        if node.left and node.right:
+            deleted_contact[0] = node
+            node.name = traverse_left(node.right)
+            node.right = delete(node.right, node.name)
+    elif node.name < name:
+        node.right = delete(node.right, name)
+    elif name < node.name:
+        node.left = delete(node.left, name)
+        
+    # AVL implementation
+    
+    return node
+```
+The above code is followed by the AVL implementation code to make sure that the BST remains balanced after deletion.
+
+### Update
+```commandline
+def update(node, name, number):
+    search_value = None
+    if node is None:
+        return node
+    if node.name == name:
+        node.number = number
+        return node
+    elif node.name > name:
+        search_value = update(node.right, name, number)
+    elif node.name < name:
+        search_value = update(node.left, name, number)
+
+    return search_value
+```
+
+### Search/Find
+```commandline
+def find(node, name):
+    found_contact = None
+    if node is None:
+        return node
+    if node.name == name:
+        found_contact = node
+        return found_contact
+    elif node.name > name:
+        found_contact = find(node.left, name)
+    elif node.name < name:
+        found_contact = find(node.right, name)
+
+    return found_contact
+```
